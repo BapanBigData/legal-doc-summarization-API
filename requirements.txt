@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+transformers
+torch
+sentencepiece
+streamlit
+requests
+boto3
+pymupdf
+python-dotenv
+python-multipart
