@@ -1,5 +1,5 @@
 from fastapi import APIRouter, File, UploadFile, HTTPException
-from app.services.s3_pdf_handler import upload_file_to_s3
+from app.services.azure_blob_handler import upload_file_to_blob
 import uuid
 
 router = APIRouter()
@@ -12,8 +12,8 @@ def upload_pdf(file: UploadFile = File(...)):
             raise HTTPException(status_code=400, detail="Only PDF files are supported.")
 
         unique_filename = f"{uuid.uuid4()}.pdf"
-        s3_key = upload_file_to_s3(file.file, unique_filename)
+        blob_key = upload_file_to_blob(file.file, unique_filename)
 
-        return {"key": s3_key}
+        return {"key": blob_key}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

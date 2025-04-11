@@ -9,3 +9,4 @@ boto3
 pymupdf
 python-dotenv
 python-multipart
+azure-storage-blob
